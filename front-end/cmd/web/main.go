@@ -1,32 +1,3 @@
-# Working with microservices in Go
-
-## Introduction
-
-### Monolithic
-
-- Client
-- Server with all logic
-  - Auth
-  - Mail
-  - Logs
-  - Logic
-- DB + cache
-
-### Microservices
-
-Braking monolith in complete separated smaller packages and communicate between theme via Json/Rest, gRpc, Rpc: easier to mantain, harder to write
-
-- Auth -> Postgres
-- Logs -> Mongo -> RabbitMQ
-- Mail -> Logs
-- Front1
-- Fornt2
-
-## Simple frontend with one microservice
-
-### Frontend setup
-
-```go
 package main
 
 import (
@@ -73,5 +44,3 @@ func render(w http.ResponseWriter, t string) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
-```
-# go-work-micro
