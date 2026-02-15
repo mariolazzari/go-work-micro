@@ -49,7 +49,6 @@ func main() {
 }
 
 func render(w http.ResponseWriter, t string) {
-
 	partials := []string{
 		"./cmd/web/templates/base.layout.gohtml",
 		"./cmd/web/templates/header.partial.gohtml",
@@ -74,4 +73,12 @@ func render(w http.ResponseWriter, t string) {
 	}
 }
 ```
-# go-work-micro
+
+### Broker service
+
+```sh
+go mod init github.com/mariolazzari/go-work-micro/broker-service
+go get github.com/go-chi/chi/v5
+go get github.com/go-chi/chi/v5/middleware
+go get github.com/go-chi/chi/cors
+```
