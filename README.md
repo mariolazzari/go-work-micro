@@ -82,3 +82,47 @@ go get github.com/go-chi/chi/v5
 go get github.com/go-chi/chi/v5/middleware
 go get github.com/go-chi/chi/cors
 ```
+
+### Docker image for broker service
+
+```yaml
+# base go image
+FROM golang:1.18-alpine as builder
+
+RUN mkdir /app
+
+COPY . /app
+
+WORKDIR /app
+
+RUN CGO_ENABLED=0 go build -o brokerApp ./cmd/api
+
+RUN chmod +x /app/brokerApp
+
+# build a tiny docker image
+FROM alpine:latest
+
+RUN mkdir /app
+
+COPY --from=builder /app/brokerApp /app
+
+CMD [ "/app/brokerApp" ]
+```
+
+```yaml
+services:
+  broker-service:
+    build:
+      context: ./../broker-service
+      dockerfile: ./../broker-service/broker-service.dockerfile
+    restart: always
+    ports:
+      - "8080:80"
+    deploy:
+      mode: replicated
+      replicas: 1
+```
+
+```sh
+docker-compose up
+```
