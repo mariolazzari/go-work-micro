@@ -320,3 +320,4 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 
 ### Getting started
 # go-stdlib-cookbook
+# go-stdlib-cookbook
