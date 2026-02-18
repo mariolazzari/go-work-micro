@@ -315,3 +315,7 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 	app.writeJSON(w, http.StatusAccepted, payload)
 }
 ```
+
+## Logger service
+
+### Getting started
