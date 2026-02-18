@@ -319,3 +319,4 @@ func (app *Config) Authenticate(w http.ResponseWriter, r *http.Request) {
 ## Logger service
 
 ### Getting started
+# go-stdlib-cookbook
